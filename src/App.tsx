@@ -1,9 +1,16 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { HeaderFiltros } from './components/HeaderFiltros'
 import { MapaClientes } from './components/MapaClientes'
 import { PainelVisitas } from './components/PainelVisitas'
 import { ResumoRegioes } from './components/ResumoRegioes'
 import { clientes } from './data/clientes'
 import type { ConfigViagem } from './types'
+import {
+  estadosDisponiveis,
+  FILTROS_PADRAO,
+  filtrarClientes,
+  poolFiltrado,
+} from './utils/filtros'
 import { CONFIG_PADRAO } from './utils/orcamento'
 import './App.css'
 
@@ -11,6 +18,24 @@ function App() {
   const [selecionados, setSelecionados] = useState<Set<string>>(new Set())
   const [config, setConfig] = useState<ConfigViagem>(CONFIG_PADRAO)
   const [passagensPorViagem, setPassagensPorViagem] = useState<Record<string, number>>({})
+  const [filtros, setFiltros] = useState(FILTROS_PADRAO)
+
+  const pool = useMemo(
+    () => poolFiltrado(clientes, filtros.exibicao),
+    [filtros.exibicao],
+  )
+
+  const clientesFiltrados = useMemo(
+    () => filtrarClientes(clientes, filtros),
+    [filtros],
+  )
+
+  const estados = useMemo(() => estadosDisponiveis(pool), [pool])
+
+  const receitaFiltrada = useMemo(
+    () => clientesFiltrados.reduce((acc, c) => acc + c.valor, 0),
+    [clientesFiltrados],
+  )
 
   function toggleCliente(id: string) {
     setSelecionados((prev) => {
@@ -25,35 +50,46 @@ function App() {
     setPassagensPorViagem((prev) => ({ ...prev, [viagemId]: valor }))
   }
 
+  async function exportarCarteira() {
+    const { exportarCarteiraXlsx } = await import('./utils/exportarCarteira')
+    exportarCarteiraXlsx(clientes)
+  }
+
+  const clientesSelecionados = clientes.filter((c) => selecionados.has(c.id))
+
   return (
-    <div className="app">
-      <div className="mapa-area">
-        <MapaClientes
-          clientes={clientes}
-          selecionados={selecionados}
-          onToggle={toggleCliente}
-        />
-        <div className="mapa-legenda">
-          <strong>Legenda</strong>
-          <span><i className="dot alto" /> Alto valor</span>
-          <span><i className="dot medio" /> Médio</span>
-          <span><i className="dot baixo" /> Baixo</span>
-          <span><i className="dot selecionado" /> Selecionado</span>
-          <span className="legenda-dica">Tamanho do círculo = valor do cliente</span>
-        </div>
-        <ResumoRegioes clientes={clientes} />
-      </div>
-      <PainelVisitas
-        clientes={clientes}
-        selecionados={selecionados}
-        config={config}
-        passagensPorViagem={passagensPorViagem}
-        onToggle={toggleCliente}
-        onConfigChange={setConfig}
-        onPassagemChange={atualizarPassagem}
-        onAplicarDiasSugeridos={(dias) => setConfig((c) => ({ ...c, dias }))}
-        onLimpar={() => setSelecionados(new Set())}
+    <div className="layout">
+      <HeaderFiltros
+        filtros={filtros}
+        estados={estados}
+        clientesVisiveis={clientesFiltrados.length}
+        receitaFiltrada={receitaFiltrada}
+        onChange={setFiltros}
+        onExportarCarteira={exportarCarteira}
       />
+
+      <div className="app">
+        <div className="mapa-area">
+          <MapaClientes
+            clientes={clientesFiltrados}
+            selecionados={selecionados}
+            onToggle={toggleCliente}
+          />
+          <ResumoRegioes clientes={clientesFiltrados} />
+        </div>
+        <PainelVisitas
+          clientes={clientesFiltrados}
+          clientesSelecionados={clientesSelecionados}
+          selecionados={selecionados}
+          config={config}
+          passagensPorViagem={passagensPorViagem}
+          onToggle={toggleCliente}
+          onConfigChange={setConfig}
+          onPassagemChange={atualizarPassagem}
+          onAplicarDiasSugeridos={(dias) => setConfig((c) => ({ ...c, dias }))}
+          onLimpar={() => setSelecionados(new Set())}
+        />
+      </div>
     </div>
   )
 }

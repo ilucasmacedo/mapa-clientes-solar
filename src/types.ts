@@ -3,6 +3,8 @@ export type Regiao = 'Norte' | 'Nordeste' | 'Centro-Oeste' | 'Sudeste' | 'Sul'
 export interface Cliente {
   id: string
   empresa: string
+  razaoSocial: string
+  cnpj: string
   cidade: string
   estado: string
   regiao: Regiao

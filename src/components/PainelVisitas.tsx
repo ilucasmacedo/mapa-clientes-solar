@@ -5,6 +5,7 @@ import { CalculadoraOrcamento } from './CalculadoraOrcamento'
 
 interface PainelVisitasProps {
   clientes: Cliente[]
+  clientesSelecionados: Cliente[]
   selecionados: Set<string>
   config: ConfigViagem
   passagensPorViagem: Record<string, number>
@@ -17,6 +18,7 @@ interface PainelVisitasProps {
 
 export function PainelVisitas({
   clientes,
+  clientesSelecionados,
   selecionados,
   config,
   passagensPorViagem,
@@ -26,7 +28,7 @@ export function PainelVisitas({
   onAplicarDiasSugeridos,
   onLimpar,
 }: PainelVisitasProps) {
-  const selecionadosLista = clientes.filter((c) => selecionados.has(c.id))
+  const selecionadosLista = clientesSelecionados
   const orcamentos = calcularOrcamentos(selecionadosLista, config, passagensPorViagem)
 
   const receitaTotal = orcamentos.reduce((acc, o) => acc + o.receita, 0)
@@ -78,7 +80,10 @@ export function PainelVisitas({
       />
 
       <section className="secao lista-clientes-secao">
-        <h2>Todos os clientes ({clientes.length})</h2>
+        <h2>
+          Ranking ({clientes.length})
+          {selecionados.size > 0 && ` · ${selecionados.size} selecionado(s)`}
+        </h2>
         <ul className="lista-clientes">
           {[...clientes]
             .sort((a, b) => b.valor - a.valor)
