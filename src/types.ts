@@ -62,3 +62,55 @@ export interface OrcamentoViagem {
   margem: number
   clientesDetalhe: ClienteOrcamento[]
 }
+
+export interface HotelOpcao {
+  nome: string
+  avaliacao: string
+  preco: number
+  link: string
+  selecionado?: boolean
+}
+
+export interface CustoViagem {
+  label: string
+  valor: number
+  detalhe?: string
+}
+
+export interface ReferenciaViagem {
+  label: string
+  url: string
+}
+
+export interface ClienteViagemResumo {
+  clienteId: string
+  receita: number
+  custoAlocado: number
+  resultado: number
+}
+
+export interface GrupoHoteis {
+  titulo: string
+  hoteis: HotelOpcao[]
+}
+
+export interface ViagemPlanejada {
+  id: string
+  titulo: string
+  rota: string
+  periodo: string
+  origem: string
+  dias: number
+  pessoas: number
+  clienteIds: string[]
+  custos: CustoViagem[]
+  custoTotal: number
+  receitaTotal: number
+  resultado: number
+  margem: number
+  clientesResumo: ClienteViagemResumo[]
+  gruposHoteis: GrupoHoteis[]
+  referencias: ReferenciaViagem[]
+  relatorioMarkdown: string
+  nota?: string
+}

@@ -25,9 +25,8 @@ export function HeaderFiltros({
   }
 
   return (
-    <header className="app-header">
-      <div className="header-titulo">
-        <h1>Mapa Clientes Solar</h1>
+    <>
+      <div className="header-titulo header-stats">
         <p>
           {clientesVisiveis} cliente{clientesVisiveis !== 1 ? 's' : ''} · Receita total:{' '}
           <strong>{formatarMoeda(receitaFiltrada)}</strong>
@@ -107,6 +106,6 @@ export function HeaderFiltros({
           Exportar carteira
         </button>
       </div>
-    </header>
+    </>
   )
 }

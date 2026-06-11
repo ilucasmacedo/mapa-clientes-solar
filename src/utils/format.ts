@@ -4,3 +4,7 @@ export function formatarMoeda(valor: number): string {
     currency: 'BRL',
   })
 }
+
+export function formatarPercentual(valor: number, casas = 1): string {
+  return `${valor.toFixed(casas).replace('.', ',')}%`
+}
