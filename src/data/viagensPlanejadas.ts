@@ -46,10 +46,14 @@ const RECEITA_CWB_SP_SANTOS_ARARAS = IDS_CWB_SP_SANTOS_ARARAS.reduce((acc, id) =
   return acc + (cliente?.valor ?? 0)
 }, 0)
 
-const LINK_BOOKING_RECIFE =
-  'https://www.booking.com/searchresults.pt-br.html?ss=Recife&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&group_children=0&no_rooms=2'
+const LINK_BOOKING_VOOS_SP_RECIFE =
+  'https://flights.booking.com/flights/SAO.CITY-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=SAO.CITY&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27'
 
-const HOTEL_RECIFE_ESCOLHIDO = 200 * 5 * 2
+const LINK_BOOKING_RECIFE =
+  'https://www.booking.com/searchresults.pt-br.html?ss=Recife&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&group_children=0&no_rooms=2'
+
+const NOITES_RECIFE = 4
+const HOTEL_RECIFE_ESCOLHIDO = 200 * NOITES_RECIFE * 2
 
 const CUSTO_SP_RECIFE =
   1874 + HOTEL_RECIFE_ESCOLHIDO + 500 + 250 + 800
@@ -155,7 +159,7 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
     id: 'sp-recife-maceio',
     titulo: 'São Paulo → Recife → Maceió',
     rota: 'São Paulo (voo) → Recife (base) → Maceió (LHT, D Solare, Verttec)',
-    periodo: '20 a 25 de junho de 2026',
+    periodo: '23 a 27 de junho de 2026',
     origem: 'São Paulo',
     dias: 5,
     pessoas: 2,
@@ -164,12 +168,12 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
       {
         label: 'Voos (ida e volta, 2 pessoas)',
         valor: 1874,
-        detalhe: 'GRU/CGH ↔ REC · ~R$ 937/pessoa',
+        detalhe: 'SP ↔ REC · ida 23/06 · volta 27/06 · Booking Flights',
       },
       {
-        label: 'Hospedagem em Recife (5 noites, 2 quartos)',
+        label: 'Hospedagem em Recife (4 noites, 2 quartos)',
         valor: HOTEL_RECIFE_ESCOLHIDO,
-        detalhe: 'Hotel Luzeiros Recife (estimativa)',
+        detalhe: 'Hotel Luzeiros Recife (estimativa) · check-in 23/06',
       },
       { label: 'Aluguel de carro (5 dias)', valor: 500, detalhe: 'Carro econômico' },
       {
@@ -183,61 +187,49 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
     clientesResumo: resumoClientes([...IDS_SP_RECIFE], CUSTO_SP_RECIFE),
     gruposHoteis: [
       {
-        titulo: 'Hospedagem em Recife (5 noites, 2 quartos separados)',
+        titulo: 'Hospedagem em Recife (4 noites, 2 quartos separados)',
         hoteis: [
           {
             nome: 'Hotel Luzeiros Recife',
             avaliacao: '3 estrelas · Centro',
-            preco: 200 * 5 * 2,
-            link: 'https://www.booking.com/hotel/br/luzeiros-recife.pt-br.html?aid=304142&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&no_rooms=2',
+            preco: 200 * NOITES_RECIFE * 2,
+            link: 'https://www.booking.com/hotel/br/luzeiros-recife.pt-br.html?aid=304142&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&no_rooms=2',
             selecionado: true,
           },
           {
             nome: 'Rede Andrade Boa Viagem',
             avaliacao: '3 estrelas · Boa Viagem',
-            preco: 250 * 5 * 2,
-            link: 'https://www.booking.com/hotel/br/rede-andrade-boa-viagem.pt-br.html?aid=304142&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&no_rooms=2',
+            preco: 250 * NOITES_RECIFE * 2,
+            link: 'https://www.booking.com/hotel/br/rede-andrade-boa-viagem.pt-br.html?aid=304142&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&no_rooms=2',
           },
           {
             nome: 'Rede Andrade LG Inn',
             avaliacao: '3 estrelas · Boa Viagem',
-            preco: 280 * 5 * 2,
-            link: 'https://www.booking.com/hotel/br/lg-inn.pt-br.html?aid=304142&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&no_rooms=2',
+            preco: 280 * NOITES_RECIFE * 2,
+            link: 'https://www.booking.com/hotel/br/lg-inn.pt-br.html?aid=304142&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&no_rooms=2',
           },
           {
             nome: 'Allure Residence by Carpediem',
             avaliacao: '4 estrelas · Boa Viagem',
-            preco: 320 * 5 * 2,
-            link: 'https://www.booking.com/hotel/br/allure-por-carpediem.pt-br.html?aid=304142&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&no_rooms=2',
+            preco: 320 * NOITES_RECIFE * 2,
+            link: 'https://www.booking.com/hotel/br/allure-por-carpediem.pt-br.html?aid=304142&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&no_rooms=2',
           },
           {
             nome: 'Kastel Manibu Recife - Boa Viagem',
             avaliacao: '4 estrelas · Boa Viagem',
-            preco: 350 * 5 * 2,
-            link: 'https://www.booking.com/hotel/br/hotel-manibu-recife.pt-br.html?aid=304142&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&no_rooms=2',
+            preco: 350 * NOITES_RECIFE * 2,
+            link: 'https://www.booking.com/hotel/br/hotel-manibu-recife.pt-br.html?aid=304142&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&no_rooms=2',
           },
         ],
       },
     ],
     referencias: [
       {
-        label: 'Momondo — Voos São Paulo → Recife',
-        url: 'https://www.momondo.com.br/passagem/sao-paulo/recife',
+        label: 'Booking Flights — Voos São Paulo → Recife (23–27/06)',
+        url: LINK_BOOKING_VOOS_SP_RECIFE,
       },
       {
-        label: 'Booking — Voos SP → Recife',
-        url: 'https://www.booking.com/flights/route/city-to-city/br-sao-paulo-to-br-recife.pt-br.html',
-      },
-      {
-        label: 'KAYAK — Voos SP → Recife',
-        url: 'https://www.kayak.com.br/voos/S%C3%A3o-Paulo-GRU/Recife-REC',
-      },
-      {
-        label: 'Trabber — Passagens SP → Recife',
-        url: 'https://www.trabber.com.br/passagem-sao-paulo-recife-gru-rec/',
-      },
-      {
-        label: 'Booking.com — Hotéis em Recife (2 quartos)',
+        label: 'Booking.com — Hotéis em Recife (2 quartos, 23–27/06)',
         url: LINK_BOOKING_RECIFE,
       },
       {

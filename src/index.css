@@ -14,4 +14,28 @@ body {
   font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
   background: #0f172a;
   color: #e2e8f0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(71, 85, 105, 0.35) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.4);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }

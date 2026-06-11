@@ -1,10 +1,10 @@
 # Orçamento de Viagem: São Paulo → Recife → Maceió
 
-**Duração:** 5 dias  
+**Período:** 23 a 27 de junho de 2026 (5 dias)  
 **Viajantes:** 2 pessoas  
 **Origem:** São Paulo (GRU/CGH)  
 **Clientes:** LHT Energia, D Solare e Verttec (Maceió/AL)  
-**Data de pesquisa:** Junho de 2026
+**Voos:** [Booking Flights — SP → Recife (23–27/06)](https://flights.booking.com/flights/SAO.CITY-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=SAO.CITY&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27)
 
 ---
 
@@ -13,44 +13,41 @@
 | Item | Valor |
 |------|-------|
 | Voos (2 pessoas, ida e volta) | R$ 1.874,00 |
-| Hotéis Recife (5 noites, 2 quartos) | R$ 2.000,00 |
+| Hotéis Recife (4 noites, 2 quartos) | R$ 1.600,00 |
 | Carro (5 dias) | R$ 500,00 |
 | Combustível e pedágios (Recife ↔ Maceió) | R$ 250,00 |
 | Alimentação (5 dias, 2 pessoas) | R$ 800,00 |
-| **TOTAL** | **R$ 5.424,00** |
+| **TOTAL** | **R$ 5.024,00** |
 
 ---
 
 ## Passagens aéreas — São Paulo → Recife
 
-- **Origem:** São Paulo (GRU/CGH)
+- **Origem:** São Paulo (SAO.CITY — GRU/CGH)
 - **Destino:** Recife (REC)
-- **Tipo:** Ida e volta
-- **Preço médio:** ~R$ 937/pessoa (referência Curitiba → Recife)
-- **Total 2 pessoas:** R$ 1.874
+- **Ida:** 23/06/2026
+- **Volta:** 27/06/2026
+- **Passageiros:** 2 adultos, econômica, ida e volta
+- **Preço estimado:** ~R$ 937/pessoa · **R$ 1.874 total**
 
-### Links para pesquisa
-
-| Site | Link |
-|------|------|
-| Momondo | https://www.momondo.com.br/passagem/sao-paulo/recife |
-| Booking Flights | https://www.booking.com/flights/route/city-to-city/br-sao-paulo-to-br-recife.pt-br.html |
-| KAYAK | https://www.kayak.com.br/voos/S%C3%A3o-Paulo-GRU/Recife-REC |
-| Trabber | https://www.trabber.com.br/passagem-sao-paulo-recife-gru-rec/ |
+**Reservar no Booking Flights:**  
+https://flights.booking.com/flights/SAO.CITY-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=SAO.CITY&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27
 
 ---
 
-## Hotéis em Recife (5 noites · 2 quartos separados)
+## Hotéis em Recife (4 noites · 2 quartos separados)
 
-| Hotel | Local | Preço/noite (1 quarto) | Total (5 noites, 2 quartos) |
+Check-in **23/06** · check-out **27/06**
+
+| Hotel | Local | Preço/noite (1 quarto) | Total (4 noites, 2 quartos) |
 |-------|-------|------------------------|-----------------------------|
-| Hotel Luzeiros Recife ⭐⭐⭐ | Centro | R$ 200 | **R$ 2.000** (escolhido) |
-| Rede Andrade Boa Viagem ⭐⭐⭐ | Boa Viagem | R$ 250 | R$ 2.500 |
-| Rede Andrade LG Inn ⭐⭐⭐ | Boa Viagem | R$ 280 | R$ 2.800 |
-| Allure Residence by Carpediem ⭐⭐⭐⭐ | Boa Viagem | R$ 320 | R$ 3.200 |
-| Kastel Manibu Recife ⭐⭐⭐⭐ | Boa Viagem | R$ 350 | R$ 3.500 |
+| Hotel Luzeiros Recife ⭐⭐⭐ | Centro | R$ 200 | **R$ 1.600** (escolhido) |
+| Rede Andrade Boa Viagem ⭐⭐⭐ | Boa Viagem | R$ 250 | R$ 2.000 |
+| Rede Andrade LG Inn ⭐⭐⭐ | Boa Viagem | R$ 280 | R$ 2.240 |
+| Allure Residence by Carpediem ⭐⭐⭐⭐ | Boa Viagem | R$ 320 | R$ 2.560 |
+| Kastel Manibu Recife ⭐⭐⭐⭐ | Boa Viagem | R$ 350 | R$ 2.800 |
 
-**Busca completa (2 quartos):** https://www.booking.com/searchresults.pt-br.html?ss=Recife&checkin=2026-06-20&checkout=2026-06-25&group_adults=2&group_children=0&no_rooms=2
+**Busca completa (2 quartos):** https://www.booking.com/searchresults.pt-br.html?ss=Recife&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&group_children=0&no_rooms=2
 
 ---
 
@@ -78,8 +75,8 @@ Deslocamento Recife ↔ Maceió (~270 km ida) para visitas comerciais.
 | D SOLARE ENERGIA E INOVACAO LTDA | Maceió/AL | R$ 6.800,00 |
 | VERTTEC ENGENHARIA E ENERGIAS RENOVAVEIS LTDA | Maceió/AL | R$ 5.400,00 |
 | **Receita combinada** | | **R$ 55.900,00** |
-| **Resultado estimado** | | **R$ 50.476,00** (~90,3%) |
+| **Resultado estimado** | | **R$ 50.876,00** (~91,0%) |
 
 ---
 
-*Documento adaptado do orçamento Curitiba → Recife (jun/2026) com origem São Paulo, 2 quartos separados e roteiro comercial em Maceió.*
+*Voos pesquisados via Booking Flights. Hospedagem com 2 quartos separados.*

@@ -581,24 +581,50 @@
   margin: 0;
   font-size: 0.85rem;
   color: #94a3b8;
-  max-width: 420px;
 }
 
 .layout-viagens {
-  background: #0b1220;
+  background: #0f172a;
+  width: 100%;
+}
+
+.layout-viagens > .app-header {
+  width: 100%;
+  padding-left: max(24px, calc((100% - 1100px) / 2));
+  padding-right: max(24px, calc((100% - 1100px) / 2));
+  box-sizing: border-box;
 }
 
 .viagens-conteudo {
   flex: 1;
-  overflow: auto;
-  padding: 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 28px max(24px, calc((100% - 1100px) / 2)) 48px;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(51, 65, 85, 0.3) transparent;
+}
+
+.viagens-conteudo::-webkit-scrollbar {
+  width: 5px;
+}
+
+.viagens-conteudo::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.35);
+  border-radius: 999px;
+}
+
+.viagens-conteudo::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.55);
 }
 
 .viagens-lista {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 960px;
+  width: 100%;
 }
 
 .viagem-card {
@@ -719,7 +745,7 @@
 }
 
 .viagem-detalhe {
-  max-width: 960px;
+  width: 100%;
 }
 
 .viagem-hero {
@@ -751,6 +777,17 @@
   overflow-x: auto;
   border: 1px solid #1f2937;
   border-radius: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(51, 65, 85, 0.3) transparent;
+}
+
+.viagem-tabela-wrap::-webkit-scrollbar {
+  height: 4px;
+}
+
+.viagem-tabela-wrap::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.35);
+  border-radius: 999px;
 }
 
 .viagem-tabela {
@@ -836,6 +873,15 @@
 }
 
 @media (max-width: 720px) {
+  .layout-viagens > .app-header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .viagens-conteudo {
+    padding: 20px 16px 32px;
+  }
+
   .viagem-resumo-grid {
     grid-template-columns: repeat(2, 1fr);
   }
