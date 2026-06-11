@@ -28,14 +28,26 @@ function totaisViagem(receitaTotal: number, custoTotal: number) {
   }
 }
 
+const NOITES_SANTOS = 2
+
 const LINK_BOOKING_SANTOS =
-  'https://www.booking.com/searchresults.pt-br.html?ss=Santos&checkin=2026-08-01&checkout=2026-08-04&group_adults=2&group_children=0&no_rooms=2'
+  'https://www.booking.com/searchresults.pt-br.html?ss=Santos&checkin=2026-08-01&checkout=2026-08-03&group_adults=2&group_children=0&no_rooms=2'
 
 const LINK_BOOKING_ARARAS =
-  'https://www.booking.com/searchresults.pt-br.html?ss=Araras%2C+Estado+de+S%C3%A3o+Paulo&checkin=2026-08-04&checkout=2026-08-06&group_adults=2&group_children=0&no_rooms=2'
+  'https://www.booking.com/searchresults.pt-br.html?ss=Araras%2C+Estado+de+S%C3%A3o+Paulo&checkin=2026-08-03&checkout=2026-08-05&group_adults=2&group_children=0&no_rooms=2'
 
-const HOTEL_SANTOS_ESCOLHIDO = 697.95 * 2
-const HOTEL_ARARAS_ESCOLHIDO = 525.15 * 2
+/** Preços originais do Booking para 3 noites (1 quarto) em Santos — rateio proporcional */
+function hotelSantos2Quartos(preco3Noites1Quarto: number) {
+  return (preco3Noites1Quarto / 3) * NOITES_SANTOS * 2
+}
+
+/** Preços originais do Booking para 2 noites (1 quarto) em Araras */
+function hotelAraras2Quartos(preco2Noites1Quarto: number) {
+  return preco2Noites1Quarto * 2
+}
+
+const HOTEL_SANTOS_ESCOLHIDO = hotelSantos2Quartos(697.95)
+const HOTEL_ARARAS_ESCOLHIDO = hotelAraras2Quartos(525.15)
 
 const CUSTO_CWB_SP_SANTOS_ARARAS =
   912.6 + 670 + 389.83 + HOTEL_SANTOS_ESCOLHIDO + HOTEL_ARARAS_ESCOLHIDO + 800
@@ -69,7 +81,7 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
     id: 'cwb-sp-santos-araras',
     titulo: 'Curitiba → SP → Santos → Araras',
     rota: 'Curitiba (voo) → São Paulo → Santos → Araras',
-    periodo: '01 a 06 de agosto de 2026',
+    periodo: '01 a 05 de agosto de 2026',
     origem: 'Curitiba',
     dias: 5,
     pessoas: 2,
@@ -78,7 +90,7 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
       { label: 'Voos (ida e volta, 2 pessoas)', valor: 912.6, detalhe: 'CWB ↔ CGH/GRU' },
       { label: 'Aluguel de carro (5 dias)', valor: 670 },
       { label: 'Combustível e pedágios', valor: 389.83, detalhe: 'SP → Santos → Araras → SP' },
-      { label: 'Hospedagem em Santos (3 noites, 2 quartos)', valor: HOTEL_SANTOS_ESCOLHIDO },
+      { label: 'Hospedagem em Santos (2 noites, 2 quartos)', valor: HOTEL_SANTOS_ESCOLHIDO },
       { label: 'Hospedagem em Araras (2 noites, 2 quartos)', valor: HOTEL_ARARAS_ESCOLHIDO },
       { label: 'Alimentação (5 dias, 2 pessoas)', valor: 800, detalhe: 'R$ 80/pessoa/dia' },
     ],
@@ -86,25 +98,25 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
     clientesResumo: resumoClientes([...IDS_CWB_SP_SANTOS_ARARAS], CUSTO_CWB_SP_SANTOS_ARARAS),
     gruposHoteis: [
       {
-        titulo: 'Hospedagem em Santos (3 noites, 2 quartos separados)',
+        titulo: 'Hospedagem em Santos (2 noites, 2 quartos separados)',
         hoteis: [
           {
             nome: 'Suíte Luxo com Piscina e Academia Stay Santos',
             avaliacao: '9,0 (Fantástico)',
-            preco: 697.95 * 2,
+            preco: hotelSantos2Quartos(697.95),
             link: LINK_BOOKING_SANTOS,
             selecionado: true,
           },
           {
             nome: 'Atlântico Inn Apart Hotel',
             avaliacao: '8,6 (Fabuloso)',
-            preco: 876.15 * 2,
+            preco: hotelSantos2Quartos(876.15),
             link: LINK_BOOKING_SANTOS,
           },
           {
             nome: 'Atlântico Golden Apart Hotel',
             avaliacao: '8,4 (Muito bom)',
-            preco: 976.05 * 2,
+            preco: hotelSantos2Quartos(976.05),
             link: LINK_BOOKING_SANTOS,
           },
         ],
@@ -115,20 +127,20 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
           {
             nome: 'Trade Garden Hotel',
             avaliacao: '7,7 (Bom)',
-            preco: 525.15 * 2,
+            preco: hotelAraras2Quartos(525.15),
             link: LINK_BOOKING_ARARAS,
             selecionado: true,
           },
           {
             nome: 'Hotel Marques',
             avaliacao: '8,3 (Muito bom)',
-            preco: 679.05 * 2,
+            preco: hotelAraras2Quartos(679.05),
             link: LINK_BOOKING_ARARAS,
           },
           {
             nome: 'Lagoa Serena Flat Hotel',
             avaliacao: '8,3 (Muito bom)',
-            preco: 846.45 * 2,
+            preco: hotelAraras2Quartos(846.45),
             link: LINK_BOOKING_ARARAS,
           },
         ],
