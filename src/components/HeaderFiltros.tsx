@@ -1,28 +1,36 @@
 import type { Regiao } from '../types'
 import { formatarMoeda } from '../utils/format'
-import type { FiltrosClientes } from '../utils/filtros'
-import { REGIOES } from '../utils/filtros'
+import type { FiltrosClientes, LimitesValor } from '../utils/filtros'
+import { filtrosAtivos, REGIOES } from '../utils/filtros'
+import { FiltroFaixaValor } from './FiltroFaixaValor'
 
 interface HeaderFiltrosProps {
   filtros: FiltrosClientes
+  limitesValor: LimitesValor
   estados: string[]
   clientesVisiveis: number
   receitaFiltrada: number
   onChange: (filtros: FiltrosClientes) => void
+  onLimpar: () => void
   onExportarCarteira: () => void
 }
 
 export function HeaderFiltros({
   filtros,
+  limitesValor,
   estados,
   clientesVisiveis,
   receitaFiltrada,
   onChange,
+  onLimpar,
   onExportarCarteira,
 }: HeaderFiltrosProps) {
   function atualizar(partial: Partial<FiltrosClientes>) {
     onChange({ ...filtros, ...partial })
   }
+
+  const faixaPersonalizada =
+    filtros.valorMin !== limitesValor.min || filtros.valorMax !== limitesValor.max
 
   return (
     <>
@@ -30,23 +38,19 @@ export function HeaderFiltros({
         <p>
           {clientesVisiveis} cliente{clientesVisiveis !== 1 ? 's' : ''} · Receita total:{' '}
           <strong>{formatarMoeda(receitaFiltrada)}</strong>
-          {filtros.exibicao === 'top30' && ' · Top 30 global'}
+          {faixaPersonalizada &&
+            ` · ${formatarMoeda(filtros.valorMin)} – ${formatarMoeda(filtros.valorMax)}`}
         </p>
       </div>
 
       <div className="header-filtros">
-        <label>
-          Ranking
-          <select
-            value={filtros.exibicao}
-            onChange={(e) =>
-              atualizar({ exibicao: e.target.value as FiltrosClientes['exibicao'] })
-            }
-          >
-            <option value="todos">Todos os clientes</option>
-            <option value="top30">Top 30 maiores</option>
-          </select>
-        </label>
+        <FiltroFaixaValor
+          min={limitesValor.min}
+          max={limitesValor.max}
+          valorMin={filtros.valorMin}
+          valorMax={filtros.valorMax}
+          onChange={(valorMin, valorMax) => atualizar({ valorMin, valorMax })}
+        />
 
         <label>
           Região
@@ -80,20 +84,8 @@ export function HeaderFiltros({
           </select>
         </label>
 
-        {(filtros.regiao !== 'todas' ||
-          filtros.estado !== 'todos' ||
-          filtros.exibicao !== 'todos') && (
-          <button
-            type="button"
-            className="btn-secundario"
-            onClick={() =>
-              onChange({
-                regiao: 'todas',
-                estado: 'todos',
-                exibicao: 'todos',
-              })
-            }
-          >
+        {filtrosAtivos(filtros, limitesValor) && (
+          <button type="button" className="btn-secundario" onClick={onLimpar}>
             Limpar filtros
           </button>
         )}

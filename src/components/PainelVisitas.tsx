@@ -40,7 +40,7 @@ export function PainelVisitas({
       <header className="painel-header">
         <div>
           <h1>Planejador de Visitas</h1>
-          <p>Origem: São Paulo — selecione clientes para montar o orçamento</p>
+          <p>Origem: Curitiba — selecione clientes para montar o orçamento</p>
         </div>
         {selecionados.size > 0 && (
           <button type="button" className="btn-secundario" onClick={onLimpar}>

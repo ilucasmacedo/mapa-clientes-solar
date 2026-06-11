@@ -49,7 +49,7 @@ export function exportarOrcamentoPdf({
   doc.setFontSize(10)
   doc.setFont('helvetica', 'normal')
   doc.setTextColor(80, 80, 80)
-  doc.text(pdfText(`Gerado em ${dataHoje()} · Origem: Sao Paulo, SP`), margem, y)
+  doc.text(pdfText(`Gerado em ${dataHoje()} · Origem: Curitiba, PR`), margem, y)
 
   y += 10
   doc.setTextColor(0, 0, 0)

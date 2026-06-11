@@ -1,34 +1,42 @@
 import type { Cliente, Regiao } from '../types'
 
-export type FiltroExibicao = 'todos' | 'top30'
-
 export interface FiltrosClientes {
   regiao: Regiao | 'todas'
   estado: string
-  exibicao: FiltroExibicao
+  valorMin: number
+  valorMax: number
 }
 
-export const FILTROS_PADRAO: FiltrosClientes = {
-  regiao: 'todas',
-  estado: 'todos',
-  exibicao: 'todos',
+export interface LimitesValor {
+  min: number
+  max: number
 }
 
-export function poolFiltrado(
-  clientes: Cliente[],
-  exibicao: FiltroExibicao,
-): Cliente[] {
-  if (exibicao === 'top30') {
-    return [...clientes].sort((a, b) => b.valor - a.valor).slice(0, 30)
+export function limitesValor(clientes: Cliente[]): LimitesValor {
+  const valores = clientes.map((c) => c.valor)
+  return {
+    min: Math.min(...valores),
+    max: Math.max(...valores),
   }
-  return clientes
+}
+
+export function criarFiltrosPadrao(clientes: Cliente[]): FiltrosClientes {
+  const limites = limitesValor(clientes)
+  return {
+    regiao: 'todas',
+    estado: 'todos',
+    valorMin: limites.min,
+    valorMax: limites.max,
+  }
 }
 
 export function filtrarClientes(
   clientes: Cliente[],
   filtros: FiltrosClientes,
 ): Cliente[] {
-  let resultado = poolFiltrado(clientes, filtros.exibicao)
+  let resultado = clientes.filter(
+    (c) => c.valor >= filtros.valorMin && c.valor <= filtros.valorMax,
+  )
 
   if (filtros.regiao !== 'todas') {
     resultado = resultado.filter((c) => c.regiao === filtros.regiao)
@@ -39,6 +47,21 @@ export function filtrarClientes(
   }
 
   return resultado
+}
+
+export function poolPorValor(clientes: Cliente[], filtros: FiltrosClientes): Cliente[] {
+  return clientes.filter(
+    (c) => c.valor >= filtros.valorMin && c.valor <= filtros.valorMax,
+  )
+}
+
+export function filtrosAtivos(filtros: FiltrosClientes, limites: LimitesValor): boolean {
+  return (
+    filtros.regiao !== 'todas' ||
+    filtros.estado !== 'todos' ||
+    filtros.valorMin !== limites.min ||
+    filtros.valorMax !== limites.max
+  )
 }
 
 export function estadosDisponiveis(clientes: Cliente[]): string[] {

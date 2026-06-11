@@ -1,7 +1,7 @@
 import { CircleMarker, MapContainer, Popup, TileLayer, Tooltip } from 'react-leaflet'
 import type { Cliente } from '../types'
 import { formatarMoeda } from '../utils/format'
-import { distanciaDeSaoPaulo, ORIGEM_SP } from '../utils/geo'
+import { distanciaDaOrigem, ORIGEM } from '../utils/geo'
 import 'leaflet/dist/leaflet.css'
 
 interface MapaClientesProps {
@@ -43,7 +43,7 @@ export function MapaClientes({ clientes, selecionados, onToggle }: MapaClientesP
       />
 
       <CircleMarker
-        center={[ORIGEM_SP.lat, ORIGEM_SP.lng]}
+        center={[ORIGEM.lat, ORIGEM.lng]}
         radius={10}
         pathOptions={{
           color: '#ffffff',
@@ -53,7 +53,7 @@ export function MapaClientes({ clientes, selecionados, onToggle }: MapaClientesP
         }}
       >
         <Tooltip permanent direction="right" offset={[8, 0]}>
-          Origem: {ORIGEM_SP.label}
+          Origem: {ORIGEM.label}
         </Tooltip>
       </CircleMarker>
 
@@ -87,7 +87,7 @@ export function MapaClientes({ clientes, selecionados, onToggle }: MapaClientesP
                 <strong>{cliente.empresa}</strong>
                 <p>{cliente.cidade} — {cliente.estado} ({cliente.regiao})</p>
                 <p><strong>Valor:</strong> {formatarMoeda(cliente.valor)}</p>
-                <p><strong>Distância de SP:</strong> {distanciaDeSaoPaulo(cliente.lat, cliente.lng)} km</p>
+                <p><strong>Distância de Curitiba:</strong> {distanciaDaOrigem(cliente.lat, cliente.lng)} km</p>
                 <button
                   type="button"
                   onClick={(e) => {

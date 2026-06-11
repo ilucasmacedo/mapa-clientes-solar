@@ -1,4 +1,8 @@
-const ORIGEM_SP = { lat: -23.5505, lng: -46.6333, label: 'São Paulo, SP' }
+export const ORIGEM = {
+  lat: -25.4284,
+  lng: -49.2733,
+  label: 'Curitiba, PR',
+}
 
 export function distanciaKm(
   lat1: number,
@@ -19,7 +23,7 @@ export function distanciaKm(
 }
 
 export function estimarCustoPassagem(lat: number, lng: number): number {
-  const km = distanciaKm(ORIGEM_SP.lat, ORIGEM_SP.lng, lat, lng)
+  const km = distanciaKm(ORIGEM.lat, ORIGEM.lng, lat, lng)
 
   if (km < 300) return Math.round(180 + km * 0.85)
   if (km < 700) return Math.round(320 + km * 1.05)
@@ -27,8 +31,6 @@ export function estimarCustoPassagem(lat: number, lng: number): number {
   return Math.round(600 + km * 1.35)
 }
 
-export function distanciaDeSaoPaulo(lat: number, lng: number): number {
-  return Math.round(distanciaKm(ORIGEM_SP.lat, ORIGEM_SP.lng, lat, lng))
+export function distanciaDaOrigem(lat: number, lng: number): number {
+  return Math.round(distanciaKm(ORIGEM.lat, ORIGEM.lng, lat, lng))
 }
-
-export { ORIGEM_SP }

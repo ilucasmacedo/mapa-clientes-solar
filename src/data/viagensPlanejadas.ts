@@ -58,8 +58,8 @@ const RECEITA_CWB_SP_SANTOS_ARARAS = IDS_CWB_SP_SANTOS_ARARAS.reduce((acc, id) =
   return acc + (cliente?.valor ?? 0)
 }, 0)
 
-const LINK_BOOKING_VOOS_SP_RECIFE =
-  'https://flights.booking.com/flights/SAO.CITY-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=SAO.CITY&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27'
+const LINK_BOOKING_VOOS_CWB_RECIFE =
+  'https://flights.booking.com/flights/CWB.AIRPORT-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=CWB.AIRPORT&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27'
 
 const LINK_BOOKING_RECIFE =
   'https://www.booking.com/searchresults.pt-br.html?ss=Recife&checkin=2026-06-23&checkout=2026-06-27&group_adults=2&group_children=0&no_rooms=2'
@@ -169,10 +169,10 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
   },
   {
     id: 'sp-recife-maceio',
-    titulo: 'São Paulo → Recife → Maceió',
-    rota: 'São Paulo (voo) → Recife (base) → Maceió (LHT, D Solare, Verttec)',
+    titulo: 'Curitiba → Recife → Maceió',
+    rota: 'Curitiba (voo) → Recife (base) → Maceió (LHT, D Solare, Verttec)',
     periodo: '23 a 27 de junho de 2026',
-    origem: 'São Paulo',
+    origem: 'Curitiba',
     dias: 5,
     pessoas: 2,
     clienteIds: [...IDS_SP_RECIFE],
@@ -180,7 +180,7 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
       {
         label: 'Voos (ida e volta, 2 pessoas)',
         valor: 1874,
-        detalhe: 'SP ↔ REC · ida 23/06 · volta 27/06 · Booking Flights',
+        detalhe: 'CWB ↔ REC · ida 23/06 · volta 27/06 · Booking Flights',
       },
       {
         label: 'Hospedagem em Recife (4 noites, 2 quartos)',
@@ -237,8 +237,8 @@ export const viagensPlanejadas: ViagemPlanejada[] = [
     ],
     referencias: [
       {
-        label: 'Booking Flights — Voos São Paulo → Recife (23–27/06)',
-        url: LINK_BOOKING_VOOS_SP_RECIFE,
+        label: 'Booking Flights — Voos Curitiba → Recife (23–27/06)',
+        url: LINK_BOOKING_VOOS_CWB_RECIFE,
       },
       {
         label: 'Booking.com — Hotéis em Recife (2 quartos, 23–27/06)',

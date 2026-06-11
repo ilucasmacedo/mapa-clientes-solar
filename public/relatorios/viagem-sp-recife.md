@@ -1,10 +1,10 @@
-# Orçamento de Viagem: São Paulo → Recife → Maceió
+# Orçamento de Viagem: Curitiba → Recife → Maceió
 
 **Período:** 23 a 27 de junho de 2026 (5 dias)  
 **Viajantes:** 2 pessoas  
-**Origem:** São Paulo (GRU/CGH)  
+**Origem:** Curitiba (CWB)  
 **Clientes:** LHT Energia, D Solare e Verttec (Maceió/AL)  
-**Voos:** [Booking Flights — SP → Recife (23–27/06)](https://flights.booking.com/flights/SAO.CITY-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=SAO.CITY&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27)
+**Voos:** [Booking Flights — CWB → Recife (23–27/06)](https://flights.booking.com/flights/CWB.AIRPORT-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=CWB.AIRPORT&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27)
 
 ---
 
@@ -21,9 +21,9 @@
 
 ---
 
-## Passagens aéreas — São Paulo → Recife
+## Passagens aéreas — Curitiba → Recife
 
-- **Origem:** São Paulo (SAO.CITY — GRU/CGH)
+- **Origem:** Curitiba (CWB — Afonso Pena)
 - **Destino:** Recife (REC)
 - **Ida:** 23/06/2026
 - **Volta:** 27/06/2026
@@ -31,7 +31,7 @@
 - **Preço estimado:** ~R$ 937/pessoa · **R$ 1.874 total**
 
 **Reservar no Booking Flights:**  
-https://flights.booking.com/flights/SAO.CITY-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=SAO.CITY&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27
+https://flights.booking.com/flights/CWB.AIRPORT-REC.AIRPORT/?type=ROUNDTRIP&adults=2&cabinClass=ECONOMY&from=CWB.AIRPORT&to=REC.AIRPORT&fromCountry=BR&toCountry=BR&depart=2026-06-23&return=2026-06-27
 
 ---
 

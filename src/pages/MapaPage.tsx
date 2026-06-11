@@ -7,23 +7,23 @@ import { ResumoRegioes } from '../components/ResumoRegioes'
 import { clientes } from '../data/clientes'
 import type { ConfigViagem } from '../types'
 import {
+  criarFiltrosPadrao,
   estadosDisponiveis,
-  FILTROS_PADRAO,
   filtrarClientes,
-  poolFiltrado,
+  limitesValor,
+  poolPorValor,
 } from '../utils/filtros'
 import { CONFIG_PADRAO } from '../utils/orcamento'
+
+const LIMITES_VALOR = limitesValor(clientes)
 
 export function MapaPage() {
   const [selecionados, setSelecionados] = useState<Set<string>>(new Set())
   const [config, setConfig] = useState<ConfigViagem>(CONFIG_PADRAO)
   const [passagensPorViagem, setPassagensPorViagem] = useState<Record<string, number>>({})
-  const [filtros, setFiltros] = useState(FILTROS_PADRAO)
+  const [filtros, setFiltros] = useState(() => criarFiltrosPadrao(clientes))
 
-  const pool = useMemo(
-    () => poolFiltrado(clientes, filtros.exibicao),
-    [filtros.exibicao],
-  )
+  const pool = useMemo(() => poolPorValor(clientes, filtros), [filtros.valorMin, filtros.valorMax])
 
   const clientesFiltrados = useMemo(
     () => filtrarClientes(clientes, filtros),
@@ -66,10 +66,12 @@ export function MapaPage() {
         </div>
         <HeaderFiltros
           filtros={filtros}
+          limitesValor={LIMITES_VALOR}
           estados={estados}
           clientesVisiveis={clientesFiltrados.length}
           receitaFiltrada={receitaFiltrada}
           onChange={setFiltros}
+          onLimpar={() => setFiltros(criarFiltrosPadrao(clientes))}
           onExportarCarteira={exportarCarteira}
         />
       </header>

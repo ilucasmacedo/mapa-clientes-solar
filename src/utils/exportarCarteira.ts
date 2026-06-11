@@ -18,12 +18,12 @@ function linhasCarteiraParaAoa(linhas: ReturnType<typeof montarDadosCarteira>) {
     'Valor Recorrência (R$)',
     'Latitude',
     'Longitude',
-    'Km de São Paulo',
+    'Km de Curitiba',
     'Aeroporto (IATA)',
     'Aeroporto',
     'Cidade do Aeroporto',
     'Km até Aeroporto',
-    'Passagem Estimada SP (R$)',
+    'Passagem Estimada CWB (R$)',
   ]
 
   const body = linhas.map((l) => [
@@ -37,7 +37,7 @@ function linhasCarteiraParaAoa(linhas: ReturnType<typeof montarDadosCarteira>) {
     l.valor,
     l.lat,
     l.lng,
-    l.kmDeSaoPaulo,
+    l.kmDaOrigem,
     l.aeroportoIata,
     l.aeroportoNome,
     l.aeroportoCidade,

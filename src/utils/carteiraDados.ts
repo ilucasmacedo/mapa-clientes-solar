@@ -1,6 +1,6 @@
 import type { Cliente, Regiao } from '../types'
 import { aeroportoMaisProximo } from './aeroportos'
-import { distanciaDeSaoPaulo, estimarCustoPassagem } from './geo'
+import { distanciaDaOrigem, estimarCustoPassagem } from './geo'
 
 export interface LinhaCarteira {
   ranking: number
@@ -13,7 +13,7 @@ export interface LinhaCarteira {
   valor: number
   lat: number
   lng: number
-  kmDeSaoPaulo: number
+  kmDaOrigem: number
   aeroportoIata: string
   aeroportoNome: string
   aeroportoCidade: string
@@ -50,7 +50,7 @@ export function montarDadosCarteira(clientes: Cliente[]): LinhaCarteira[] {
         valor: cliente.valor,
         lat: cliente.lat,
         lng: cliente.lng,
-        kmDeSaoPaulo: distanciaDeSaoPaulo(cliente.lat, cliente.lng),
+        kmDaOrigem: distanciaDaOrigem(cliente.lat, cliente.lng),
         aeroportoIata: aeroporto.aeroporto.iata,
         aeroportoNome: aeroporto.aeroporto.nome,
         aeroportoCidade: aeroporto.aeroporto.cidade,
